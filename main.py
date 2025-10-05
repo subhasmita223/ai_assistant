@@ -139,7 +139,7 @@ class TherapistGUI:
         if sender == "Ayane":
             self.current_emotion = emotion
             self.current_expression = expression
-            #self.speak(text)
+            self.speak(text)
             print(f"-Therapist ({timestamp}): {text} \nEmotion: {emotion} \nExpression: {expression}", end="-\n", flush=True)
     
     def draw_chat(self):
