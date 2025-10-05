@@ -7,14 +7,14 @@ A GUI-based AI therapist companion application built with Pygame and powered by 
 ### Live Application Screenshots
 
 **Initial Conversation - Emotion Detection:**
-![Happy Emotion Detection](https://github.com/user-attachments/assets/screenshot1.png)
+![Happy Emotion Detection](screenshots\Screenshot (1077).png)
 
 *User expresses happiness, AI detects emotion and responds with smiling expression*
 
 
 
 **Complex Emotion Handling - Interview Anxiety:**
-![Anxiety Detection](https://github.com/user-attachments/assets/screenshot2.png)
+![Anxiety Detection](screenshots\Screenshot (1079).png)
 
 *AI processes mixed emotions and provides empathetic response*
 
