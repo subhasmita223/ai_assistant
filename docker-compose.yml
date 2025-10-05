@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  therapist-companion:
+    build: .
+    container_name: therapist-companion
+    environment:
+      - DISPLAY=${DISPLAY}
+      - PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native
+    volumes:
+      # For X11 forwarding (Linux GUI)
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${XDG_RUNTIME_DIR}/pulse:${XDG_RUNTIME_DIR}/pulse:rw
+      # Mount .env file securely
+      - ./.env:/app/.env:ro
+      # Mount assets if you want to update them without rebuilding
+      - ./assets:/app/assets:ro
+    network_mode: host
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    
+  # Alternative service for headless deployment (future web interface)
+  therapist-companion-web:
+    build: .
+    container_name: therapist-companion-web
+    ports:
+      - "8080:8080"
+    environment:
+      - HEADLESS=true
+    volumes:
+      - ./.env:/app/.env:ro
+    restart: unless-stopped
+    profiles:
+      - web
+
+networks:
+  default:
+    driver: bridge
+
+# For production deployment with secrets management
+secrets:
+  api_key:
+    file: .env
